@@ -1,6 +1,6 @@
 # Everyone's a Critic
 ## Project Idea and Description
-"Everyone's a Critic" is a web app that allows users to search for movies using the OMDb API, add them to their watched list, and share their opinions through comments. Inspired by Goodreads, it aims to create a community of movie enthusiasts who can discover, discuss, and connect over their favorite & least favorite films.
+"Everyone's a Critic" is a web app that allows users to search for movies using the OMDb api, add them to their watched list, and share their opinions through comments. Inspired by Goodreads, it aims to create a community of movie enthusiasts who can discover, discuss, and connect over their favorite & least favorite films.
 
 ## API Choice and Proof of Concept
 ![API-pirates-result](https://i.imgur.com/OFUgzXu.png)

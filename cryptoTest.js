@@ -47,6 +47,5 @@ const crypto = require('crypto')
  // AES - Advanced Encryption Standard
  myEncryption = cryptoJs.AES.encrypt(stringToEncrypt, encryptionKey)
  console.log(myEncryption.toString())
-
  const decryptedMessage = cryptoJs.AES.decrypt(myEncryption.toString(), encryptionKey)
  console.log(decryptedMessage.toString(cryptoJs.enc.Utf8))
