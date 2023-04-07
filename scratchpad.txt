@@ -13,3 +13,9 @@ sequelize model:create --name user --attributes email:string,password:string
     
 
 const url = `http://www.omdbapi.com/?s=${req.query.userSearch}&apikey=${process.env.API_KEY}`
+
+sequelize model:create --name movie --attributes title:string,year:integer,director:string,plot:text,imdbID:string,poster:text
+
+sequelize model:create --name comment --attributes content:text,userId:integer,movieId:integer
+
+sequelize model:create --name list --attributes userId:integer,movieId:integer
