@@ -11,3 +11,5 @@ sequelize model:create --name user --attributes email:string,password:string
     a. edit BOTH the user model & user mirgration to add columns
     b. rm models/user.js migrations/<the user migration>.js, rerun new model create command
     
+
+const url = `http://www.omdbapi.com/?s=${req.query.userSearch}&apikey=${process.env.API_KEY}`
