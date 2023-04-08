@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.user.hasMany(models.comment)
+      models.user.belongToMany(models.movie, { through: models.users_movie })
     }
   }
   user.init({
