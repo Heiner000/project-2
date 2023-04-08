@@ -1,0 +1,14 @@
+<%- include('../partials/header.ejs') %>
+
+<h1><%= movie.Title %></h1>
+<% if (movie.Poster !== "N/A") { %>
+    <img src="<%= movie.Poster %>" alt="<% movie.Title %>'s release poster">
+<% } else { %>
+    <p>No movie poster found... </p>
+<% } %>
+<p>year: <%= movie.Year %></p>
+<p>rated: <%= movie.Rated %></p>
+<p>genre: <%= movie.Genre %></p>
+<p>Summary: <%= movie.Plot %></p>
+
+<%- include('../partials/footer.ejs') %>

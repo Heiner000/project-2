@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Your Movie Search</h1>
+<p>Search for your favorite movies below...</p>
+
+<form method="GET" action="/movies/results">
+    <label for="userInput">Search:</label>
+    <input type="text" placeholder="movie title..." name="searchInput" id="userInput">
+
+    <input type="submit" value="Submit">
+</form>
+
+<%- include('../partials/footer.ejs') %>

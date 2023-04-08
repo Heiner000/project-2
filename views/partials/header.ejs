@@ -7,9 +7,10 @@
     <style>
         ul li {
             display: inline;
+            margin: 0 20px;
         }
     </style>
-    <title>User Auth 🔒</title>
+    <title>🎥 Everyone's A Critic!</title>
 </head>
 <body>
     <nav>
@@ -20,10 +21,11 @@
             <% if (user) { %>
                 <li><a href="/users/profile">Profile</a></li>
                 <li><a href="/users/logout">Logout</a></li>
+                <li><a href="/movies/">Search Movies</a></li>
             <% } else { %>
                 <!-- shown when the user is logged out -->
                 <li><a href="/users/new">Sign Up</a></li>
-                <li><a href="/users/login">Sign In</a></li>
+                <li><a href="/users/login">Log In</a></li>
             <% } %>
         </ul>
     </nav>

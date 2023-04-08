@@ -5,12 +5,14 @@ const db = require('../models')
 const bcrypt = require('bcrypt')
 const cryptoJs = require('crypto-js')
 const { fail } = require('assert')
+const axios = require('axios')
+
 
 // mount routes on router
 // GET / -- show recent favs - movies index
 router.get('/', async (req, res) => {
     try {
-        res.send('Show a list of recently favorited movies')
+        res.render('movies/index.ejs')
 
     } catch (err) {
         console.log(err)
@@ -18,11 +20,36 @@ router.get('/', async (req, res) => {
     }
 })
 
-// POST /search -- fetch api data & display results - movies results
+// GET /results -- fetch api data & display results - movies results
+router.get('/results', async (req, res) => {
+    try {
+        console.log(req.query.searchInput)
+        const url = `http://www.omdbapi.com/?s=${req.query.searchInput}&apikey=${process.env.API_KEY}` 
+        const response = await axios.get(url)
+        res.render('movies/results.ejs', {
+            searchInput: req.query.searchInput,
+            responseData: response.data
+    })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
 
-
-// GET /:id -- show movie details for specific movie - movies show
-
+// GET /:movie_id -- show movie details for specific movie - movies show
+router.get('/:movie_id', async (req, res) => {
+    try {
+        console.log(req.params.movie_id)
+        const url = `http://www.omdbapi.com/?i=${req.params.movie_id}&apikey=${process.env.API_KEY}`
+        const response = await axios.get(url)
+        res.render('movies/details.ejs', {
+            movie: response.data
+        })
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
 
 // POST /:id/favorites -- add a movie to user's favorites list
 

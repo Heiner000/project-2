@@ -1,0 +1,23 @@
+<%- include('../partials/header.ejs') %>
+
+<h1>Search Results for <%= searchInput %></h1>
+
+<% responseData.Search.forEach(movie => { %>
+   <div>
+    <h2><%= movie.Title %></h2>
+
+    <p>year: <%= movie.Year %></p>
+
+    <% if (movie.Poster !== "N/A") { %>
+        <img src="<%= movie.Poster %>" alt="<% movie.Title %>'s release poster">
+    <% } else { %>
+        <p>No movie poster found... </p>
+    <% } %>
+    </div> 
+    <div>    
+    <a href="/movies/<%= movie.imdbID %>">details</a>
+   </div>
+<% }) %>
+<%  %>
+
+<%- include('../partials/footer.ejs') %>
