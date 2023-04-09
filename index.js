@@ -4,6 +4,8 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const cryptoJs = require('crypto-js')
 const db = require('./models')
+const methodOverride = require('method-override')
+
 
 // app config
 const app = express()
@@ -11,6 +13,7 @@ const PORT = process.env.PORT || 8000
 app.set('view engine', 'ejs')
 
 // middlewares
+app.use(methodOverride('_method'))
 // parse html form request bodies
 app.use(express.urlencoded({ extended: false }))
 // tells express ot parse incoming cookies sent from the browser
@@ -65,5 +68,5 @@ app.use('/movies', require('./controllers/movies.js'))
 
 // listen on a port
 app.listen(PORT, () => {
-    console.log(`authenticating users on port ${PORT}`)
+    console.log(`🏃‍♂️ Running on port ${PORT} 💨`)
 })

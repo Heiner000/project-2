@@ -8,9 +8,14 @@
     <h1>Your Faves</h1>
     
     <% allFaves.forEach(fave => { %>
-        <a href="/movies/<%= fave.imdbID %>">
-            <p><%= fave.title %> (<%= fave.year %>)</p>
-        </a>
+        <div class="well">
+            <a href="/movies/<%= fave.imdbID %>">
+                <p><%= fave.title %> (<%= fave.year %>)</p>
+            </a>
+            <form method="POST" action="/movies/<%= fave.imdbID %>/favorites?_method=DELETE">
+                <button class="btn btn-danger" type="submit">💀 Remove from Faves</button>
+            </form>
+        </div>
     <% }) %>
 
 </div>

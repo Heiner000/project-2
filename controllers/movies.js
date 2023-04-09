@@ -81,10 +81,30 @@ router.post('/:movie_id/favorites', async (req, res) => {
     }
 })
 
-// DELETE /favorites/:id -- remove a movie from favorites list
-
-
-
+// DELETE /:movie_id/favorites -- remove a movie from favorites list
+router.delete('/:movie_id/favorites', async (req, res) => {
+    try {
+        if (!res.locals.user) {
+            res.redirect('/users/login?message=You need to log in to delete a movie from your list of favorites!')
+        } else {
+            const movie = await db.movie.findOne({
+                where: { imdbID: req.params.movie_id }
+            })
+            if (movie) {
+                await res.locals.user.removeMovie(movie)
+                res.redirect('/users/profile')
+            } else {
+                res.redirect('/users/profile?message=Movie not found in your favorites')
+            }
+            // res.redirect('/users/profile?message=Movie removed from favorites!')
+            // console.log('🔥 fave movie destroyed')
+        }
+    } catch (err) {
+        console.log('🛑 There has been an error')
+        console.log(err)
+        res.redirect('/')
+    }
+})
 
 // export the router instance
 module.exports = router
