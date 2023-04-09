@@ -4,4 +4,15 @@
 
 <p>Here is a list of your favorite movies!</p>
 
+<div class="container">
+    <h1>Your Faves</h1>
+    
+    <% allFaves.forEach(fave => { %>
+        <a href="/movies/<%= fave.imdbID %>">
+            <p><%= fave.title %> (<%= fave.year %>)</p>
+        </a>
+    <% }) %>
+
+</div>
+
 <%- include('../partials/footer.ejs') %>

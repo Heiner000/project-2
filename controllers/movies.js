@@ -61,22 +61,23 @@ router.post('/:movie_id/favorites', async (req, res) => {
             const response = await axios.get(url)
             const movieData = response.data
             const [movie] = await db.movie.findOrCreate({
-                where: { imdbID: movieId },
+                where: { imdbID: req.params.movie_id },
                 defaults: {
                     title: movieData.Title,
                     year: movieData.Year,
                     director: movieData.Director,
-                    plot: movideData.Plot,
-                    poster: movideData.Poster
+                    plot: movieData.Plot,
+                    poster: movieData.Poster
                 }
             })
             await res.locals.user.addMovie(movie)
-            res.send('add movie to faves')
-            // res.redirect(`/movies/${movieId}`)
+            console.log('😎 added movie to faves 👍')
+            res.redirect(`/users/profile`)
         }
     } catch (err) {
+        console.log('🛑 There has been an error')
         console.log(err)
-        res.redirect('/')
+        res.redirect('/movies/results')
     }
 })
 

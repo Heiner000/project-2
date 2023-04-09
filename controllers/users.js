@@ -94,14 +94,18 @@ router.get('/logout', (req, res) => {
 })
 
 // GET /users/profile -- show authorized users their profile page
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
     // if the user comes and is not logged in -- they lack authorization
     if (!res.locals.user) {
         // redirect them to the login
         res.redirect('/users/login?message=You are not authorized to view that resource. Please authenticate to continue 😎')
     } else {
+        const faves = await res.locals.user.getMovies()
+
         // if they are allowed to be here, show them their profile
-        res.render('users/profile.ejs')
+        res.render('users/profile.ejs', {
+            allFaves: faves
+        })
     }
 })
 
