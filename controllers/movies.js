@@ -52,7 +52,33 @@ router.get('/:movie_id', async (req, res) => {
 })
 
 // POST /:id/favorites -- add a movie to user's favorites list
-
+router.post('/:movie_id/favorites', async (req, res) => {
+    try {
+        if (!res.locals.user) {
+            res.redirect('/users/login?message=You need to log in to add a movie to your list of favorites!')
+        } else {
+            const url = `http://www.omdbapi.com/?i=${req.params.movie_id}&apikey=${process.env.API_KEY}`
+            const response = await axios.get(url)
+            const movieData = response.data
+            const [movie] = await db.movie.findOrCreate({
+                where: { imdbID: movieId },
+                defaults: {
+                    title: movieData.Title,
+                    year: movieData.Year,
+                    director: movieData.Director,
+                    plot: movideData.Plot,
+                    poster: movideData.Poster
+                }
+            })
+            await res.locals.user.addMovie(movie)
+            res.send('add movie to faves')
+            // res.redirect(`/movies/${movieId}`)
+        }
+    } catch (err) {
+        console.log(err)
+        res.redirect('/')
+    }
+})
 
 // DELETE /favorites/:id -- remove a movie from favorites list
 
