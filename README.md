@@ -11,28 +11,27 @@
 
 
 ## RESTful Routing Chart
-| VERB   | URL                           | CRUD   | DESCRIPTION                               | VIEW           |
-| ------ | ----------------------------- | ------ | ----------------------------------------- | -------------- |
-| GET    | /                             | Read   | Home page                                 | Home           |
-|        |                               |        |                                           |                |
-| POST   | /users                        | Create | Add user data to db                       |                |
-| GET    | /users/new                    | Read   | Display signup form                       | Signup Form    |
-| GET    | /users/login                  | Read   | Display login form                        | Login Form     |
-| POST   | /users/login                  | Read   | Checks user credentials against db        |                |
-| GET    | /users/logout                 | Read   | Logout user by clearing cookeis           |                |
-| GET    | /users/:id/lists              | Read   | Display user's movie list                 | Lists Index    |
-| POST   | /users/:id/lists              | Create | Add a movie to user's watched list        |                |
-| DELETE | /users/:id/lists              | Delete | Delete a movie from a user's watched list |                |
-|        |                               |        |                                           |                |
-| GET    | /movies                       | Read   | Display search form for movies            | Movies Index   |
-| POST   | /movies/search                | Create | Fetch API data & display results          | Movies Results |
-| GET    | /movies/:id                   | Read   | Show details of a specific movie          | Movies Show    |
-| GET    | /movies/:id/comments/new      | Read   | Show a form to create comment on movie    | Comment New    |
-| POST   | /movies/:id/comments          | Create | Add comment to movie page                 |                |
-| GET    | /movies/:id/comments/:id/edit | Read   | Show form to edit a comment on a movie    | Comment Edit   |
-| PUT    | /movies/:id/comments/:id      | Update | Update an existing comment                |                |
-| DELETE | /movies/:id/comments/:id      | Delete | Delete a comment on a movie               |                |
-|        |                               |        |                                           |                |
+| VERB   | URL                   | CRUD    | DESCRIPTION                             | VIEW           |
+| ------ | --------------------- | ------- | --------------------------------------- | -------------- |
+| GET    | /                     | Read    | Home page                               | Index          |
+|        |                       |         |                                         |                |
+| POST   | /users                | Create  | Add user data to db                     |                |
+| GET    | /users/new            | Read    | Display signup form                     | Users new      |
+| GET    | /users/login          | Read    | Display login form                      | Users login    |
+| POST   | /users/login          | Read    | Checks user credentials against db      |                |
+| GET    | /users/logout         | Read    | Logout user by clearing cookeis         |                |
+| GET    | /users/profile        | Read    | Display user's movie list               | Users profile  |
+|        |                       |         |                                         |                |
+| GET    | /movies               | Read    | Display search form for movies          | Movies index   |
+| GET    | /movies/results       | Read    | Fetch API data & display results        | Movies results |
+| GET    | /movies/:id           | Read    | Show details of a specific movie        | Movies details |
+| POST   | /movies/:id/favorites | Create  | Add a movie to user's favorites         |                |
+| DELETE | /movies/:id/favorites | Delete  | Destroy a movie from a user's favs list |                |
+|        |                       |         |                                         |                |
+| POST   | /comments             | Create  | Add a comment to movie page             |                |
+| GET    | /comments/edit/:id    | Read    | Edit user's own comment                 | Comments Edit  |
+| PUT    | /comments/:id         | Update  | Process comment's edits                 |                |
+| DELETE | /coments/:id          | Destroy | Delete user's own comment               |                |               |                |
 
 
 ## Wireframes

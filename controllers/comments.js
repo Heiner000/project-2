@@ -4,13 +4,6 @@ const db = require('../models')
 const router = express.Router()
 const axios = require('axios')
 
-function logMethod(req, res, next) {
-    console.log(`Request method (before override): ${req.method}`)
-    next()
-}
-
-router.use(logMethod)
-
 // POST /comments -- post a new comment
 router.post('/', async (req, res) => {
     try {
