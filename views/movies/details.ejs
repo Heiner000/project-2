@@ -19,4 +19,19 @@
     </form>
   </div>
 
+  <div class="well">
+    <h4>Leave a comment:</h4>
+    <form method="POST" action="/movies/<%= movie.imdbID %>/comments">
+        <div class="form-group">
+      
+          <div class="form-group">
+            <label for="content">Content</label>
+            <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+          </div>
+        
+          <input type="submit" class="btn btn-primary">
+        </div>
+      </form>
+  </div>
+
 <%- include('../partials/footer.ejs') %>
