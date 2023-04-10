@@ -42,8 +42,25 @@ router.get('/:movie_id', async (req, res) => {
         console.log(req.params.movie_id)
         const url = `http://www.omdbapi.com/?i=${req.params.movie_id}&apikey=${process.env.API_KEY}`
         const response = await axios.get(url)
+        const movieData = response.data
+
+        const movie = await db.movie.findOne({
+            where: { imdbID: req.params.movie_id }
+        })
+        let comments = []
+
+        if (movie) {
+            comments = await db.comment.findAll({
+                where: {
+                    movieId: movie.id
+                },
+                include: [db.user]
+            })
+        }
+
         res.render('movies/details.ejs', {
-            movie: response.data
+            movie: movieData,
+            comments: comments
         })
     } catch (err) {
         console.log(err)
