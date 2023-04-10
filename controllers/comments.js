@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
         if (!res.locals.user) {
             res.redirect('/users/login?message=You need to log in to leave a comment!')
         } else {
-            const url = `http://www.omdbapi.com/?i=${req.params.movieId}&apikey=${process.env.API_KEY}`
+            const url = `http://www.omdbapi.com/?i=${req.body.movieId}&apikey=${process.env.API_KEY}`
             const response = await axios.get(url)
             const movieData = response.data
             const [movie] = await db.movie.findOrCreate({
