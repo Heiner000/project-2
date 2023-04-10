@@ -44,6 +44,9 @@
                 <form method="GET" action="/comments/edit/<%= comment.id %>" style="display:inline;" >
                     <button type="submit" class="btn btn-sm btn-warning">Edit</button>
                 </form>
+                <form method="POST" action="/comments/<%= comment.id %>?_method=DELETE" style="display:inline;" >
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
             <% } %>
         </span>
     <% }) %>

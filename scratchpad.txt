@@ -19,3 +19,8 @@ sequelize model:create --name movie --attributes title:string,year:integer,direc
 sequelize model:create --name comment --attributes content:text,userId:integer,movieId:integer
 
 sequelize model:create --name users_movies --attributes userId:integer,movieId:integer
+
+
+Bugs to Track:
+- comments not loading in order of most recently created
+- 

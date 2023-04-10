@@ -73,10 +73,13 @@ router.put('/:id', async (req, res) => {
             await comment.update({
                 content: req.body.content
             })
-            console.log(`ReRoUtInG tO: ${comment.movieId}`)
-            res.redirect(`/movies/${comment.movieId}`)
+
+            const movie = await db.movie.findByPk(comment.movieId)
+
+            console.log(`🚨 ReRoUtInG tO: ${movie.imdbID}`)
+            res.redirect(`/movies/${movie.imdbID}`)
         } else {
-            res.redirect(`/movies/${comment.movieId}`)
+            res.redirect(`/movies/${movie.imdbID}`)
         }
     } catch (err) {
         console.log('update comment error 🛑')
@@ -92,9 +95,12 @@ router.delete('/:id', async (req, res) => {
         const comment = await db.comment.findByPk(req.params.id)
         if (res.locals.user && res.locals.user.id === comment.userId) {
             await comment.destroy()
-            res.redirect(`/movies/${comment.movieId}`)
+
+            const movie = await db.movie.findByPk(comment.movieId)
+
+            res.redirect(`/movies/${movie.imdbID}`)
         } else {
-            res.redirect(`/movies/${comment.movieId}`)
+            res.redirect(`/movies/${movie.imdbID}`)
         }
     } catch (err) {
         console.log('💀🛑 delete comment error')
