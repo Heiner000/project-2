@@ -22,6 +22,7 @@ app.use((req, res, next) => {
     // incoming request console logger
     console.log(`[${new Date().toLocaleString()}]: ${req.method} ${req.url}`)
     console.log('request body: ', req.body)
+    console.log('Request method (after override):', req.method)
     // send data downstream to the other routes
     // res.locals.myData = 'hi 👋'
     next() // tells express that this middleware has finished
@@ -63,8 +64,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', require('./controllers/users.js'))
-app.use('/movies', require('./controllers/movies.js'))
 app.use('/comments', require('./controllers/comments.js'))
+app.use('/movies', require('./controllers/movies.js'))
 
 // listen on a port
 app.listen(PORT, () => {

@@ -41,7 +41,7 @@
             <p><%= comment.user.email %>: </p>
             <p><%= comment.content %></p>
             <% if (locals.user && locals.user.id === comment.userId) { %>
-                <form method="GET" action="/comments/<%= comment.id %>/edit" style="display:inline;" >
+                <form method="GET" action="/comments/edit/<%= comment.id %>" style="display:inline;" >
                     <button type="submit" class="btn btn-sm btn-warning">Edit</button>
                 </form>
             <% } %>

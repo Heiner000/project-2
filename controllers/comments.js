@@ -1,11 +1,15 @@
 // required packages
 const express = require('express')
-const router = express.Router()
 const db = require('../models')
-const bcrypt = require('bcrypt')
-const cryptoJs = require('crypto-js')
-const { fail } = require('assert')
+const router = express.Router()
 const axios = require('axios')
+
+function logMethod(req, res, next) {
+    console.log(`Request method (before override): ${req.method}`)
+    next()
+}
+
+router.use(logMethod)
 
 // POST /comments -- post a new comment
 router.post('/', async (req, res) => {
@@ -43,13 +47,13 @@ router.post('/', async (req, res) => {
 })
 
 // GET /comments/:id/edit edit a comment - comments edit
-router.get('/:id/edit', async (req, res) => {
+router.get('/edit/:id', async (req, res) => {
     try {
         const comment = await db.comment.findByPk(req.params.id)
         if (res.locals.user && res.locals.user.id === comment.userId) {
-            res.render('comments/edit', { comment })
+            res.render('comments/edit', { comment: comment })
         } else {
-            res.redirect('/movies/${comment.movieId}')
+            res.redirect(`/movies/${comment.movieId}`)
         }
     } catch (err) {
         console.log('🙊 edit comment error!!!')
@@ -60,6 +64,8 @@ router.get('/:id/edit', async (req, res) => {
 
 // PUT /comments/:id -- update a comment
 router.put('/:id', async (req, res) => {
+    console.log('inside the PUT /comments/:id route')
+
     try {
         const comment = await db.comment.findByPk(req.params.id)
 
@@ -67,6 +73,7 @@ router.put('/:id', async (req, res) => {
             await comment.update({
                 content: req.body.content
             })
+            console.log(`ReRoUtInG tO: ${comment.movieId}`)
             res.redirect(`/movies/${comment.movieId}`)
         } else {
             res.redirect(`/movies/${comment.movieId}`)
