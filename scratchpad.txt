@@ -30,3 +30,5 @@ Citations:
 comment section:
 https://bbbootstrap.com/snippets/bootstrap-5-user-comment-section-template-46707409
 
+user icon:
+<a target="_blank" href="https://icons8.com/icon/22396/user">User</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

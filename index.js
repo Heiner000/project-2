@@ -55,6 +55,8 @@ app.use(async (req, res, next) => {
     }
 })
 
+app.use(express.static(__dirname + '/public/'))
+
 // routes and controllers
 app.get('/', (req, res) => {
     console.log(res.locals)
