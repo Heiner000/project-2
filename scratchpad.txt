@@ -24,3 +24,9 @@ sequelize model:create --name users_movies --attributes userId:integer,movieId:i
 Bugs to Track:
 - comments not loading in order of most recently created
 - 
+
+
+Citations:
+comment section:
+https://bbbootstrap.com/snippets/bootstrap-5-user-comment-section-template-46707409
+

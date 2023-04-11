@@ -2,9 +2,6 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../models')
-const bcrypt = require('bcrypt')
-const cryptoJs = require('crypto-js')
-const { fail } = require('assert')
 const axios = require('axios')
 
 
