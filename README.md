@@ -1,8 +1,9 @@
 # Everyone's a Critic
 ## Project Idea and Description
-"Everyone's a Critic" is a web app that allows users to search for movies using the OMDb api, add them to their watched list, and share their opinions through comments. Inspired by Goodreads, it aims to create a community of movie enthusiasts who can discover, discuss, and connect over their favorite & least favorite films.
+"Everyone's a Critic" is a web app that allows users to search for movies, add them to their watched list, and share their opinions through comments. Inspired by Goodreads, it aims to create a community of movie enthusiasts who can discover, discuss, and connect over their favorite & least favorite films.
 
 ## API Choice and Proof of Concept
+Thunderclient test results fetching movie info from OMDb API using "pirates" search query.
 ![API-pirates-result](https://i.imgur.com/OFUgzXu.png)
 
 
@@ -31,7 +32,7 @@
 | POST   | /comments             | Create  | Add a comment to movie page             |                |
 | GET    | /comments/edit/:id    | Read    | Edit user's own comment                 | Comments Edit  |
 | PUT    | /comments/:id         | Update  | Process comment's edits                 |                |
-| DELETE | /coments/:id          | Destroy | Delete user's own comment               |                |               |                |
+| DELETE | /coments/:id          | Destroy | Delete user's own comment               |                |
 
 
 ## Wireframes
@@ -50,13 +51,13 @@ As a user...
 + I want to be able to log out
 
 ## MVP Goals
-Include user authentication and registration.
-Include movie search functionality using the OMDb API.
-Create and manage a user's watched movies list.
-Allow users to leave comments on movies.
++ Include user authentication and registration.
++ Include movie search functionality using the OMDb API.
++ Create and manage a user's watched movies list.
++ Allow users to leave comments on movies.
 
 ## Stretch Goals
-Add to user profiles with profile pictures and bio sections.
-Allow users to rate movies and display average ratings.
-Allow users to include tags describing their watched movies.
++ Add to user profiles with profile pictures and bio sections.
++ Allow users to rate movies and display average ratings.
++ Allow users to include tags describing their watched movies.
 
