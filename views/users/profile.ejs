@@ -1,21 +1,21 @@
 <%- include('../partials/header.ejs') %>
 
-<h1>Welcome to your profile, <%= user.email %></h1>
-
-<p>Here is a list of your favorite movies!</p>
-
-<div class="container">
-    <h1>Your Faves</h1>
+<h1 class="my-3">Welcome to your profile, <%= user.email %></h1>
+<br>
+<div class="container my-3">
+    <h2 class="text-start">Your Faves</h2>
+    <br>
     
     <% allFaves.forEach(fave => { %>
-        <div class="well">
+        <div class="container text-start" style="display: flex;">
             <a href="/movies/<%= fave.imdbID %>">
                 <p><%= fave.title %> (<%= fave.year %>)</p>
             </a>
-            <form method="POST" action="/movies/<%= fave.imdbID %>/favorites?_method=DELETE">
-                <button class="btn btn-danger" type="submit">💀 Remove from Faves</button>
+            <form class="mx-2" method="POST" action="/movies/<%= fave.imdbID %>/favorites?_method=DELETE">
+                <button class="btn btn-danger" type="submit" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Remove from Faves</button>
             </form>
         </div>
+        <br>
     <% }) %>
 
 </div>

@@ -1,23 +1,25 @@
 <%- include('../partials/header.ejs') %>
 
-<h1>Search Results for <%= searchInput %></h1>
+<h1>Search Results for "<em><%= searchInput %></em>":</h1>
 
-<% responseData.Search.forEach(movie => { %>
-   <div>
-    <h2><%= movie.Title %></h2>
-
-    <p>year: <%= movie.Year %></p>
-
-    <% if (movie.Poster !== "N/A") { %>
-        <img src="<%= movie.Poster %>" alt="<% movie.Title %>'s release poster">
-    <% } else { %>
-        <p>No movie poster found... </p>
-    <% } %>
-    </div> 
-    <div>    
-    <a href="/movies/<%= movie.imdbID %>">details</a>
-   </div>
-<% }) %>
-<%  %>
+<div class="container card-group">
+    <div class="row row-cols-1 row-cols-md-3">
+        <% responseData.Search.forEach(movie => { %>
+        <div class="col">
+                <div class="card">
+                    <% if (movie.Poster !== "N/A") { %>
+                        <a href="/movies/<%= movie.imdbID %>"><img class="card-img-top img-fluid" src="<%= movie.Poster %>" alt="<% movie.Title %>'s release poster"></a>
+                    <% } else { %>
+                        <p>No movie poster found... </p>
+                    <% } %>
+                    <h4 class="card-title"><%= movie.Title %> <small class="text-muted">(<%= movie.Year %>)</small> </h4>                 
+                    <div class="card-footer">    
+                        <a href="/movies/<%= movie.imdbID %>">details</a>
+                    </div>
+                </div> 
+            </div>
+            <% }) %>
+        </div>
+</div>
 
 <%- include('../partials/footer.ejs') %>
