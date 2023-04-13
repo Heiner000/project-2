@@ -7,12 +7,12 @@
     <br>
     
     <% allFaves.forEach(fave => { %>
-        <div class="container text-start" style="display: flex;">
+        <div class="container text-start justify-content-between" style="display: flex;">
             <a href="/movies/<%= fave.imdbID %>">
                 <p><%= fave.title %> (<%= fave.year %>)</p>
             </a>
             <form class="mx-2" method="POST" action="/movies/<%= fave.imdbID %>/favorites?_method=DELETE">
-                <button class="btn btn-danger" type="submit" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Remove from Faves</button>
+                <button class="btn btn-danger" type="submit" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Remove</button>
             </form>
         </div>
         <br>

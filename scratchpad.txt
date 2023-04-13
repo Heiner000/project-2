@@ -27,8 +27,16 @@ Bugs to Track:
 
 
 Citations:
-comment section:
-https://bbbootstrap.com/snippets/bootstrap-5-user-comment-section-template-46707409
 
 user icon:
 <a target="_blank" href="https://icons8.com/icon/22396/user">User</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+coming soon photo:
+Photo by <a href="https://unsplash.com/@hngstrm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Henry & Co.</a> on <a href="https://unsplash.com/s/photos/movies?orientation=landscape&utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+movies tiled:
+Photo by <a href="https://unsplash.com/@tysonmoultrie?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tyson Moultrie</a> on <a href="https://unsplash.com/photos/BQTHOGNHo08?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+fairfax theater photo:
+Photo by <a href="https://unsplash.com/@addyire?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Addy Ire</a> on <a href="https://unsplash.com/photos/Jz4X5UOoVfs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  

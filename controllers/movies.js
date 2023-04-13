@@ -37,7 +37,7 @@ router.get('/results', async (req, res) => {
 router.get('/:movie_id', async (req, res) => {
     try {
         console.log(req.params.movie_id)
-        const url = `http://www.omdbapi.com/?i=${req.params.movie_id}&apikey=${process.env.API_KEY}`
+        const url = `http://www.omdbapi.com/?i=${req.params.movie_id}&plot=full&apikey=${process.env.API_KEY}`
         const response = await axios.get(url)
         const movieData = response.data
 
