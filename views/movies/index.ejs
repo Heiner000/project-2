@@ -1,13 +1,36 @@
 <%- include('../partials/header.ejs') %>
 
-<h1>Your Movie Search</h1>
-<p>Search for your favorite movies below...</p>
+<div class="d-flex container text-center my-3">
+    <div class="row align-items-center w-100 p-3">
+      <div class="col-6">
+        <div class="container">
+            <h1>Your Movie Search</h1>
+            <p>Search for your favorite movies below...</p>
+    
+            <form method="GET" action="/movies/results">
+                <label for="userInput">Search:</label>
+                <input type="text" placeholder="movie title..." name="searchInput" id="userInput">
+    
+                <input class="" type="submit" value="Submit">
+            </form>
+        </div>
+      </div>
+      <div class="col-6">
+        <h2 class="my-3">Recently Favorited Movies:</h2>
+        <% recentFavedMovies.forEach(users_movies => { %>
+            <div class="container">
+                <a href="/movies/<%= users_movies.movie.imdbID %>">
+                    <%= users_movies.movie.title %>
+                </a>
+            </div>
+            <br>
+            <% }) %>
+      </div>
+    </div>
+  </div>
 
-<form method="GET" action="/movies/results">
-    <label for="userInput">Search:</label>
-    <input type="text" placeholder="movie title..." name="searchInput" id="userInput">
-
-    <input type="submit" value="Submit">
-</form>
+<div class="container">
+    
+</div>
 
 <%- include('../partials/footer.ejs') %>

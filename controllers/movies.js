@@ -9,8 +9,13 @@ const axios = require('axios')
 // GET / -- show recent favs - movies index
 router.get('/', async (req, res) => {
     try {
-        res.render('movies/index.ejs')
+        const recentFavedMovies = await db.users_movies.findAll({
+            order: [['createdAt','DESC']],
+            limit: 10,
+            include: [db.user, db.movie]
+        })
 
+        res.render('movies/index.ejs', { recentFavedMovies })
     } catch (err) {
         console.log(err)
         res.redirect('/')
