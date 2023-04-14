@@ -4,6 +4,10 @@ const router = express.Router()
 const db = require('../models')
 const axios = require('axios')
 
+// if the 'year' is a range, select the starting year
+function extractStartYear(year) {
+    return parseInt(year.split('-')[0], 10)
+}
 
 // mount routes on router
 // GET / -- show recent favs - movies index
@@ -83,18 +87,16 @@ router.post('/:movie_id/favorites', async (req, res) => {
                 where: { imdbID: req.params.movie_id },
                 defaults: {
                     title: movieData.Title,
-                    year: movieData.Year,
+                    year: extractStartYear(movieData.Year),
                     director: movieData.Director,
                     plot: movieData.Plot,
                     poster: movieData.Poster
                 }
             })
             await res.locals.user.addMovie(movie)
-            console.log('😎 added movie to faves 👍')
             res.redirect(`/users/profile`)
         }
     } catch (err) {
-        console.log('🛑 There has been an error')
         console.log(err)
         res.redirect('/movies/results')
     }
@@ -115,11 +117,8 @@ router.delete('/:movie_id/favorites', async (req, res) => {
             } else {
                 res.redirect('/users/profile?message=Movie not found in your favorites')
             }
-            // res.redirect('/users/profile?message=Movie removed from favorites!')
-            // console.log('🔥 fave movie destroyed')
         }
     } catch (err) {
-        console.log('🛑 There has been an error')
         console.log(err)
         res.redirect('/')
     }

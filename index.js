@@ -1,4 +1,4 @@
-// required packages
+// REQUIRED PACKAGES
 require('dotenv').config()
 const express = require('express')
 const cookieParser = require('cookie-parser')
@@ -6,12 +6,12 @@ const cryptoJs = require('crypto-js')
 const db = require('./models')
 const methodOverride = require('method-override')
 
-// app config
+// APP CONFIG
 const app = express()
 const PORT = process.env.PORT || 8000
 app.set('view engine', 'ejs')
 
-// middlewares
+// MIDDLEWARES
 app.use(methodOverride('_method'))
 // parse html form request bodies
 app.use(express.urlencoded({ extended: false }))
@@ -56,7 +56,7 @@ app.use(async (req, res, next) => {
 
 app.use(express.static(__dirname + '/public/'))
 
-// routes and controllers
+// ROUTES & CONTROLLERS
 app.get('/', (req, res) => {
     console.log(res.locals)
     res.render('index.ejs', {
@@ -68,7 +68,7 @@ app.use('/users', require('./controllers/users.js'))
 app.use('/comments', require('./controllers/comments.js'))
 app.use('/movies', require('./controllers/movies.js'))
 
-// listen on a port
+// SERVER LISTEN ON PORT
 app.listen(PORT, () => {
     console.log(`🏃‍♂️ Running on port ${PORT} 💨`)
 })

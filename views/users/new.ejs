@@ -1,12 +1,22 @@
 <%- include('../partials/header.ejs') %>
 
+<!-- Sign up page container -->
 <div class="login-page my-5">
     <div class="container">
         <div class="row d-flex">
             <div class="col-lg-10 offset-lg-1">
-              <h3 class="my-3">Sign up for an account:</h3>
+                <!-- sign up form header -->
+              <h2 class="my-5">Sign up for an account:</h2>
                 <div class="bg-white shadow rounded">
                     <div class="row">
+                        <!-- left side image and text section -->
+                        <div class="col-md-5 ps-0 d-none d-md-block">
+                            <div class="form-right h-100 bg-primary text-white text-center pt-5">
+                                <img src="https://i.imgur.com/Ozlt5hJb.png" alt="EVAC logo">
+                                <h3 class="mt-4 fs-1">Join the Club!!</h3>
+                            </div>
+                        </div>
+                        <!-- sign up form -->
                         <div class="col-md-7 pe-0">
                             <div class="form-left h-100 py-5 px-5">
                                 <form class="row g-4" method="POST" action="/users">
@@ -27,17 +37,12 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-primary px-4 float-end mt-4">Create Profile!</button>
+                                            <button type="submit" class="btn btn-primary px-4 float-end mt-4 shadow">Create Profile!</button>
                                         </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-md-5 ps-0 d-none d-md-block">
-                            <div class="form-right h-100 bg-primary text-white text-center pt-5">
-                                <img src="https://i.imgur.com/Ozlt5hJb.png" alt="EVAC logo">
-                                <h3 class="mt-4 fs-1">Welcome Back!!</h3>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

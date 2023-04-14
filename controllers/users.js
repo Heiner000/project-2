@@ -15,7 +15,6 @@ router.get('/new', (req, res) => {
 // POST /users -- CREATE a new user from the form @ GET /users/new
 router.post('/', async (req, res) => {
     try {
-        console.log(req.body)
     // do a find or create with the user's given email
     const [newUser, created] = await db.user.findOrCreate({
         where: {
@@ -88,7 +87,6 @@ router.post('/login', async (req, res) => {
 
 // GET /users/logout -- log out the current user
 router.get('/logout', (req, res) => {
-    console.log('logging user out!')
     res.clearCookie('userId')
     res.redirect('/')
 })

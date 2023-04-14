@@ -2,35 +2,42 @@
 
 <div class="d-flex container text-center my-3">
     <div class="row align-items-center w-100 p-3">
-      <div class="col-6">
-        <div class="container">
-            <h1>Your Movie Search</h1>
-            <p>Search for your favorite movies below...</p>
-    
+      <!-- movie search card -->
+      <div class="col-sm-6 ">
+        <h1 class="card-title my-4">Movie Title Search</h1>
+        <div class="card mb-3 shadow">
+          <div class="card-body">
+            <p class="card-text">Search for your favorite movies below...</p>
+            <p class="card-text">Be careful of typos!</p>
+            <!-- search form -->
             <form method="GET" action="/movies/results">
-                <label for="userInput">Search:</label>
-                <input type="text" placeholder="movie title..." name="searchInput" id="userInput">
-    
-                <input class="" type="submit" value="Submit">
+              <label for="userInput">Search:</label>
+              <input type="text" placeholder="movie title..." name="searchInput" id="userInput">
+              <!-- search button -->
+              <input class="btn btn-primary my-2" type="submit" value="Search">
             </form>
+          </div>
         </div>
+        <!-- Recents Favorites -->
       </div>
-      <div class="col-6">
+      <div class="col-sm-6">
         <h2 class="my-3">Recently Favorited Movies:</h2>
-        <% recentFavedMovies.forEach(users_movies => { %>
-            <div class="container">
-                <a href="/movies/<%= users_movies.movie.imdbID %>">
-                    <%= users_movies.movie.title %>
-                </a>
-            </div>
-            <br>
-            <% }) %>
+        <% if (recentFavedMovies.length > 0) { %>
+          <!-- iterate thru favorites(users_movies) join table -->
+          <% recentFavedMovies.forEach(users_movies => { %>
+              <div class="container my-1">
+                  <a href="/movies/<%= users_movies.movie.imdbID %>">
+                      <%= users_movies.movie.title %>
+                  </a>
+              </div>
+              <br>
+              <% }) %>
+          <% } else { %>
+            <!-- display a message if no recently faved movies found -->
+              <p class="my-3">No recently favorited movies.</p>
+          <% } %>
       </div>
     </div>
   </div>
-
-<div class="container">
-    
-</div>
 
 <%- include('../partials/footer.ejs') %>

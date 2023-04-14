@@ -69,13 +69,11 @@ router.put('/:id', async (req, res) => {
 
             const movie = await db.movie.findByPk(comment.movieId)
 
-            console.log(`🚨 ReRoUtInG tO: ${movie.imdbID}`)
             res.redirect(`/movies/${movie.imdbID}`)
         } else {
             res.redirect(`/movies/${movie.imdbID}`)
         }
     } catch (err) {
-        console.log('update comment error 🛑')
         console.log(err)
         res.redirect('/')
     }
@@ -96,7 +94,6 @@ router.delete('/:id', async (req, res) => {
             res.redirect(`/movies/${movie.imdbID}`)
         }
     } catch (err) {
-        console.log('💀🛑 delete comment error')
         console.log(err)
     }
 })

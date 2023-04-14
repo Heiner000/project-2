@@ -1,25 +1,56 @@
 <%- include('../partials/header.ejs') %>
 
-<h1>Search Results for "<em><%= searchInput %></em>":</h1>
-
-<div class="container card-group">
-    <div class="row row-cols-1 row-cols-md-3">
-        <% responseData.Search.forEach(movie => { %>
-        <div class="col">
-                <div class="card">
-                    <% if (movie.Poster !== "N/A") { %>
-                        <a href="/movies/<%= movie.imdbID %>"><img class="card-img-top img-fluid" src="<%= movie.Poster %>" alt="<% movie.Title %>'s release poster"></a>
-                    <% } else { %>
-                        <p>No movie poster found... </p>
-                    <% } %>
-                    <h4 class="card-title"><%= movie.Title %> <small class="text-muted">(<%= movie.Year %>)</small> </h4>                 
-                    <div class="card-footer">    
-                        <a href="/movies/<%= movie.imdbID %>">details</a>
+<div class="container">
+    <!-- show what the user searched for -->
+    <h1 class="my-3">Search Results for "<em><%= searchInput %></em>":</h1>
+    <!-- check if there were any search results were found -->
+    <% if (responseData.Search) { %>
+        <div class="container card-group">
+            <div class="row row-cols-1 row-cols-md-3">
+                <!-- iterate through & display search results -->
+                <% responseData.Search.forEach(movie => { %>
+                    <div class="col">
+                        <div class="card">
+                            <!-- show poster if any -->
+                            <% if (movie.Poster !== "N/A") { %>
+                                <a href="/movies/<%= movie.imdbID %>"><img class="card-img-top img-fluid" src="<%= movie.Poster %>" alt="<% movie.Title %>'s release poster"></a>
+                            <% } else { %>
+                                <p>No movie poster found... </p>
+                            <% } %>
+                            <h4 class="card-title">
+                                <%= movie.Title %> <small class="text-muted">(<%= movie.Year %>)</small>
+                            </h4>
+                            <div class="card-footer">    
+                                <a href="/movies/<%= movie.imdbID %>">details</a>
+                            </div>
+                        </div> 
                     </div>
-                </div> 
+                <% }) %>
             </div>
-            <% }) %>
         </div>
+    <% } else { %>
+        <!-- let user know if no results are found -->
+        <h3><u>No results found.</u></h3>
+        <!-- typos in search titles might cause errors -->
+        <p>Be careful about <strong>typos</strong>!</p>
+        <!-- display search form for user to try search again -->
+        <div class="row justify-content-center">
+            <h1 class="card-title my-4">Movie Title Search</h1>
+            <div class="card mb-3 shadow col-md-auto" >
+              <div class="card-body">
+                <p class="card-text">Search for your favorite movies below...</p>
+                <p class="card-text">Be careful of typos!</p>
+                <form method="GET" action="/movies/results">
+                  <label for="userInput">Search:</label>
+                  <input type="text" placeholder="movie title..." name="searchInput" id="userInput">
+                  <input class="btn btn-primary" type="submit" value="Let's Go!">
+                </form>
+              </div>
+            </div>
+            
+          </div>
+
+    <% } %>
 </div>
 
 <%- include('../partials/footer.ejs') %>

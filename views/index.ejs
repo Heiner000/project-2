@@ -1,17 +1,19 @@
 <%- include('./partials/header.ejs') %>
  
+<!-- intro section with background image and dark overlay -->
 <div id="intro" class="d-flex p-4 text-center">
   <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
     <div class="d-flex justify-content-center align-items-center h-100">
       <div class="text-white">
-        <h1 class="mb-3">Everyone's a Critic!</h1>
-        <h4 class="mb-3">Welcome! Join our community and search for your favorite movies, add them to your Favorites List and you and your friends can discover, discuss, & connect over your favorite films!</h4>
-        <a href="/users/new" class="btn btn-lg btn-outline-light">Sign Up</a>
-        <a href="/users/login" class="btn btn-lg btn-outline-light">Log In</a>
+        <!-- page title -->
+        <h1 class="mb-4">Everyone's a Critic!</h1>
+        <!-- welcome message -->
+        <h4 class="mb-4 d-flex">Welcome! Join our community and search for your favorite movies, add them to your Favorites List and you and your friends can discover, discuss, & connect over your favorite films!</h4>
+        <!-- sign up and login button -->
+        <a href="/users/new" class="btn btn-lg btn-light mx-2">Sign Up</a>
+        <a href="/users/login" class="btn btn-lg btn-light mx-2">Log In</a>
       </div>
     </div>
   </div>
-
-
 
 <%- include('./partials/footer.ejs') %>

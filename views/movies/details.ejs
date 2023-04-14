@@ -3,6 +3,7 @@
 <div class="container my-5">
     <div class=" mb-3" style="max-width: 90%;">
         <div class="row g-0">
+            <!-- movie poster if any -->
             <div class="col-md-4">
                 <% if (movie.Poster !== "N/A") { %>
                     <img class="img-fluid rounded-start" src="<%= movie.Poster %>" alt="<% movie.Title %>'s release poster">
@@ -10,6 +11,7 @@
                     <p>No movie poster found... </p>
                 <% } %>
             </div>
+            <!-- movie details -->
             <div class="container col-md-8">
                 <div class="card-body">
                 <h3 class="card-title"><%= movie.Title %></h3>
@@ -34,6 +36,7 @@
                     </p>
                 </div>
                 <br>
+                <!-- add movie to favorites button -->
                 <div class="container d-flex justify-content-center">
                     <form class="my-2" method="POST" action="/movies/<%= movie.imdbID %>/favorites">
                     <input hidden type="text" name="title" value="<%= movie.Title %>">
@@ -45,10 +48,12 @@
         </div>
     </div>
     <br>
+        <!-- comments section -->
         <div class="card text-bg-light mb-3 my-3" >
             <div class="card-header"><h4 class="text-start">Comments:</h4></div>
             <div class="card-body">
                 <h5 class="card-title text-start">Share your critique!</h5>
+                <!-- add a new comment -->
                 <form method="POST" action="/comments">
                     <div class="form-group">
                         <input type="hidden" name="movieId" value="<%= movie.imdbID %>">
@@ -59,17 +64,23 @@
                     </div>
                 </form>
             </div>
+            <!-- display comments -->
             <% if (comments.length > 0) { %>
                 <% comments.forEach((comment, i) => { %>
+                    <!-- create a card for each comment -->
                     <div class="card my-3 mx-3">
                         <div class="card-body">
+                            <!-- include user email and content for comment -->
                             <h5 class="card-title text-start"><%= comment.user.email %>: </h5>
                             <p class="card-text text-start"><%= comment.content %></p>
                             <span class="d-flex justify-content-end">
+                                <!-- for logged in user -->
                                 <% if (locals.user && locals.user.id === comment.userId) { %>
+                                    <!-- edit button -->
                                     <form class="mx-1" method="GET" action="/comments/edit/<%= comment.id %>" style="display:inline;" >
                                         <button type="submit" class="btn btn-sm btn-outline-warning">Edit</button>
                                     </form>
+                                    <!-- delete button -->
                                     <form method="POST" action="/comments/<%= comment.id %>?_method=DELETE" style="display:inline;" >
                                         <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                                     </form>

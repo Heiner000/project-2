@@ -61,3 +61,11 @@ As a user...
 + Allow users to rate movies and display average ratings.
 + Allow users to include tags describing their watched movies.
 
+## Citations
+  
+fairfax theater photo:
+Photo by <a href="https://unsplash.com/@addyire?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Addy Ire</a> on <a href="https://unsplash.com/photos/Jz4X5UOoVfs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+login & sign up page:
+https://codepen.io/aniketrod/pen/oNGPWXq?editors=1100
+

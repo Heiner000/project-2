@@ -1,16 +1,19 @@
 <%- include('../partials/header.ejs') %>
 
+<!-- profile page header -->
 <h1 class="my-3">Welcome to your profile, <%= user.email %></h1>
 <br>
 <div class="container my-3">
     <h2 class="text-start">Your Faves</h2>
     <br>
-    
+    <!-- iterate thru all favorited movies -->
     <% allFaves.forEach(fave => { %>
         <div class="container text-start justify-content-between" style="display: flex;">
+            <!-- display fav title and year -->
             <a href="/movies/<%= fave.imdbID %>">
                 <p><%= fave.title %> (<%= fave.year %>)</p>
             </a>
+            <!-- remove fave form -->
             <form class="mx-2" method="POST" action="/movies/<%= fave.imdbID %>/favorites?_method=DELETE">
                 <button class="btn btn-danger" type="submit" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Remove</button>
             </form>
