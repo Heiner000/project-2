@@ -33,7 +33,6 @@ router.post('/', async (req, res) => {
         }
 
     } catch (err) {
-        console.log('🙈 post new comment error!!')
         console.log(err)
         res.redirect('/')
     }
@@ -49,7 +48,6 @@ router.get('/edit/:id', async (req, res) => {
             res.redirect(`/movies/${comment.movieId}`)
         }
     } catch (err) {
-        console.log('🙊 edit comment error!!!')
         console.log(err)
         res.redirect('/')
     }
@@ -57,8 +55,6 @@ router.get('/edit/:id', async (req, res) => {
 
 // PUT /comments/:id -- update a comment
 router.put('/:id', async (req, res) => {
-    console.log('inside the PUT /comments/:id route')
-
     try {
         const comment = await db.comment.findByPk(req.params.id)
 

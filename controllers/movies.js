@@ -5,7 +5,7 @@ const db = require('../models')
 const axios = require('axios')
 
 // if the 'year' is a range, select the starting year
-function extractStartYear(year) {
+function getStartYear(year) {
     return parseInt(year.split('-')[0], 10)
 }
 
@@ -87,7 +87,7 @@ router.post('/:movie_id/favorites', async (req, res) => {
                 where: { imdbID: req.params.movie_id },
                 defaults: {
                     title: movieData.Title,
-                    year: extractStartYear(movieData.Year),
+                    year: getStartYear(movieData.Year),
                     director: movieData.Director,
                     plot: movieData.Plot,
                     poster: movieData.Poster
